@@ -4,7 +4,7 @@ generator client {
 
 // For Vercel deploys switch provider to "postgresql" (Neon/Supabase) - SQLite files don't persist there.
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
