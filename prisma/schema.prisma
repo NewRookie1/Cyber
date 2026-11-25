@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+// For Vercel deploys switch provider to "postgresql" (Neon/Supabase) - SQLite files don't persist there.
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Course {
+  id          Int          @id @default(autoincrement())
+  slug        String       @unique
+  title       String
+  level       String
+  duration    String
+  students    Int          @default(0)
+  priceCents  Int          @default(0)
+  summary     String
+  image       String
+  syllabus    String       // JSON array of module titles
+  enrollments Enrollment[]
+}
+
+model Enrollment {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  courseId  Int
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([email, courseId])
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  body      String
+  createdAt DateTime @default(now())
+}
+
+model Subscriber {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  token     String   @unique @default(cuid())
+  createdAt DateTime @default(now())
+}

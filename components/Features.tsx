@@ -35,7 +35,7 @@ export default function Features() {
   ]
 
   return (
-    <section className="py-24 px-4 md:px-12 bg-dark">
+    <section id="features" className="scroll-mt-16 py-24 px-4 md:px-12 bg-dark">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-5xl font-bold mb-16 text-center gradient-text">
           Why Choose Us

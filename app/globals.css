@@ -31,3 +31,16 @@ body {
   transform: translateY(-4px);
   box-shadow: 0 20px 40px rgba(96, 165, 250, 0.2);
 }
+
+html { scroll-behavior: smooth; }
+.bg-grid {
+  background-image: linear-gradient(rgba(96,165,250,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(96,165,250,.07) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+}
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+.cursor::after { content: '▋'; animation: blink 1s steps(2) infinite; color: #60a5fa; }
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes float { 50% { transform: translateY(-14px); } }
+.float { animation: float 6s ease-in-out infinite; }

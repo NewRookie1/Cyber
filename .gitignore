@@ -31,3 +31,13 @@ yarn-error.log*
 .vscode/
 *.swp
 *.swo
+
+.env
+
+*.db
+
+*.db-journal
+
+node_modules
+
+.next
